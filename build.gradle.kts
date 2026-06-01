@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.1.0"
+    kotlin("jvm") version "2.3.21"
     application
     id("com.google.cloud.tools.jib") version "3.4.4"
 }
@@ -21,8 +21,6 @@ dependencies {
     implementation("org.http4k:http4k-format-jackson")
 
     testImplementation(kotlin("test"))
-    testImplementation("org.http4k:http4k-testing-kotest")
-    testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
 }
 
 kotlin {
