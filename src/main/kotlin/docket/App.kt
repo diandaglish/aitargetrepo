@@ -1,5 +1,6 @@
 package docket
 
+import org.http4k.core.ContentType
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method.GET
 import org.http4k.core.Response
@@ -10,7 +11,8 @@ import org.http4k.server.Undertow
 import org.http4k.server.asServer
 
 fun docket(): HttpHandler = routes(
-    "/health" bind GET to { Response(OK).body("OK") }
+    "/health" bind GET to { Response(OK).body("OK") },
+    "/greet" bind GET to { Response(OK).header("Content-Type", ContentType.TEXT_PLAIN.toHeaderValue()).body("Hello!") }
 )
 
 fun main() {
