@@ -40,6 +40,10 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - run: gcloud auth configure-docker ${{ env.REGISTRY }} --quiet
+
       - uses: actions/setup-java@v4
         with:
           java-version: 21
@@ -52,8 +56,6 @@ jobs:
           GCP_PROJECT_ID: ${{ env.PROJECT_ID }}
           IMAGE_TAG: ${{ github.sha }}
         run: ./gradlew jib --no-daemon
-
-      - uses: google-github-actions/setup-gcloud@v2
 
       - name: Deploy to Cloud Run
         run: |
