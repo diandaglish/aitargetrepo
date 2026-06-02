@@ -38,7 +38,7 @@ jib {
     to {
         image = "us-central1-docker.pkg.dev/${System.getenv("GCP_PROJECT_ID") ?: "PROJECT_ID"}/docket/docket"
         tags = setOf(System.getenv("IMAGE_TAG") ?: "latest")
-        credHelper = "gcloud"
+        credHelper { helper = "gcloud" }
     }
     container {
         ports = listOf("8080")
