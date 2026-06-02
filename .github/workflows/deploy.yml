@@ -57,6 +57,8 @@ jobs:
           JIB_TO_PASSWORD: ${{ steps.auth.outputs.access_token }}
         run: ./gradlew jib --no-daemon
 
+      - uses: google-github-actions/setup-gcloud@v2
+
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy ${{ env.SERVICE }} \
