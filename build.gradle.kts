@@ -21,6 +21,7 @@ dependencies {
     implementation("org.http4k:http4k-format-jackson")
 
     testImplementation(kotlin("test"))
+    testImplementation("org.http4k:http4k-client-java")
 }
 
 kotlin {
